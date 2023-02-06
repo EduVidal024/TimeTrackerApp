@@ -1,0 +1,26 @@
+Membres:
+- Arnau Berenguer Jiménez, 1606139
+- Pau Bernués Tejada, 1598103
+- Eduard Vidal, 1423993
+- Marc Franco, 1527557
+
+Memòria:
+- Disseny UML actualitzat: Marc
+- configurar webserver/timetracker tutorial: Eduard, Marc, Arnau, Pau
+- Diferenciar tasques de projectes: Arnau, Pau
+- Canviar títol app bar: Marc
+- Afegir manera per crear projecte/tasca nova: Eduard
+- Canviar manera d'engegar/parar una tasca: Arnau, Eduard, Pau
+- Botó de més informació: Marc, Eduard
+- Diferenciar tasques/intervals que s'estan cronometrant: Arnau, Pau
+
+- Disseny UML actualitzat: afegir tot el respectiu a la fita 3 al diagrama UML
+- configurar webserver/timetracker tutorial: realitzar les tasques que mana el tutorial per a montar el webserver, i el principi de la app
+- Diferenciar tasques de projectes: canviar el color de les tasques a groc, i el dels projectes a blau
+- Canviar títol app bar: canviar el nom que apareix a la app bar, per "Main Page" en comptes de "root"
+- Afegir manera per crear projecte/tasca nova: afegir un floatingActionButton a la part de baix a la dreta. Un cop premut el botó, s'obre una pestanya que demana el nom de l'activitat, amb dos textButtond per indicar el tipus, i un per cancel·lar.
+- Canviar manera d'engegar/parar una tasca: afegir a les tasques un floatingButton, que al ser premut comença a cronometrar la tasca, i al ser premut altre cop la para.
+- Botó de més informació: afegir a les tasques i projectes un iconButton, que al ser premut s'obre una pestanya on es mostra la informació sobre l'activitat.
+- Diferenciar tasques/intervals que s'estan cronometrant: canviar el color de les tasques o projectes que s'estan cronometrant, a un color verd, inclosos els projectes pare d'aquestes tasques/projectes.
+
+(tots els membres ens hem ajudat mutuament a acabar cadascuna de les funcions amb reunuions grupals)

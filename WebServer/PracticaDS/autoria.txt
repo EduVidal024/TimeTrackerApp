@@ -1,0 +1,29 @@
+Membres:
+- Arnau Berenguer Jiménez, 1606139
+- Pau Bernués Tejada, 1598103
+- Eduard Vidal, 1423993
+- Marc Franco, 1527557
+
+Memòria:
+- Disseny UML:  Arnau, Pau, Eduard, Marc
+- Getters, setters i constructors: Arnau, Pau, Eduard, Marc
+- fita1.fita1.Rellotge (singleton): Arnau, Eduard, Pau
+- mostrar: Pau, Marc
+- update: Eduard, Arnau, Pau, Marc
+- updateTasca i updateProjecte: Eduard, Arnau
+
+
+Disseny UML: disseny de l'estructura de les classes i funcions  projecte.
+
+Getters, setters i constructors: crear la base de les classes, amb les variables i getters, setters i constructors necessaris.
+
+fita1.fita1.Rellotge: implementació de la classe fita1.fita1.Rellotge amb el patró singleton.
+
+mostrar: mostrar per pantalla l'arbre d'un projecte sencer i les seves tasques corresponents, intervals actuals...
+
+update: actualitzar els valors al rebre un notify.
+
+updateTasca i updateProjecte: actualitzar els valors de durades i hores que hem rebut prèviament actualitzats de l'observable.
+
+
+(tots els membres ens hem ajudat mutuament a acabar cadascuna de les funcions amb reunuions grupals)

@@ -1,0 +1,179 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+'RELACIONS CLASSES'
+
+package "OBSERVER" #DDDDDD {
+  Observer <|-- Observable
+}
+
+Observer <|-up- fita1.Interval
+fita1.Activitat <|-down- fita1.Tasca
+fita1.Activitat "0..*" -left-* fita1.Projecte
+Observable <|-left- fita1.Rellotge
+fita1.Activitat <|-left- fita1.Projecte
+fita1.Interval "1..*" -right-* fita1.Tasca
+fita2.SearchByTag <|-down-* fita1.Activitat
+fita2.Visitor <|-left- fita2.SearchByTag
+fita3.VisitorId <|-left- fita3.SearchById
+fita3.SearchById <|-down-* fita1.Activitat
+fita3.SearchById <|-left- fita3.ContadorId
+webserver.WebServer <|-left- webserver.MainWebServer
+
+
+'CLASSES'
+ class fita1.Interval
+{
+    # durada : Duration
+    # dataHoraInici : LocalDateTime
+    # dataHoraFinal : LocalDateTime
+    - tascaPare : Tasca
+    {static}- logger : Logger
+    + setTascaPare(Tasca tasca)
+    + getDurada() : Duration
+    + getHoraInici() : LocalDateTime
+    + getHoraFinal() : LocalDateTime
+    + getFatherTasca() : Tasca
+    + Interval()
+    + stop()
+    + update(LocalDateTime time)
+}
+
+class fita1.Tasca
+{
+    - intervals : List<Interval>
+    - intervalActual : Interval
+    {static}- logger : Logger
+    + Tasca()
+    + Tasca(String nom, Projecte pare)
+    + startTasca()
+    + stopTasca()
+    + updateTasca()
+    + mostrarArbre()
+    + mostrar()
+    + searchByTag(String)
+
+}
+
+class fita1.Projecte
+{
+
+    -llistaActivitats : List<Activtat>
+    {static} -logger : Logger
+    + Projecte(String nom)
+    + Projecte(String nom, Projecte pare)
+    + getLlistaActivitats() : List<Activitat>
+    + mostrarArbre()
+    + mostrar()
+    + updateProjecte()
+    + searchByTag(String)
+}
+ abstract class fita1.Activitat
+{
+    # formatejador : DateTimeFormatter
+    # durada : Duration
+    # dataHoraInici : LocalDateTime
+    # dataHoraFinal : LocalDateTime
+    # nom : String
+    # pare : Projecte
+    + tags : Arraylist<String>
+    - mySearch : SearchByTag
+    {static} - logger : Logger
+
+    + Activitat(String nom)
+    + Activitat(String nom, Projecte pare)
+    + getDurada() : Duration
+    + getNom() : String
+    + getHoraInici() : LocalDateTime
+    + getHoraFinal() : LocalDateTime
+    + getPare() : Projecte
+    + mostrar()
+    + mostrarArbre()
+    + getTags() : Arraylist<String>
+    + addTags(String)
+    + acceptSearchByTag(): SearchByTag
+    +searchByTag(String)
+
+}
+
+
+interface Observer
+{
+    + Update(LocalDateTime time)
+}
+abstract class Observable
+{
+    -observer : List<Observer>
+    +Observable()
+    +addObserver()
+    +deleteObserver()
+    +notifyObserver()
+
+}
+
+
+class fita1.Rellotge
+{
+
+    {static}-rellotgeIntern : Rellotge
+    - timer : Timer
+    - horaActual : LocalDateTime
+    {static} - logger : Logger
+
+    - Rellotge()
+    {static}+getInstance() : Rellotge
+    - task : TimerTask
+    + start()
+    + stop()
+
+}
+interface fita2.Visitor{
+    + visitTask(Tasca, String)
+    + visitProject(Projecte, String)
+}
+class fita2.SearchByTag{
+    {static}-logger : Logger
+    + visitTask(Tasca, String)
+    + visitProject(Projecte, String)
+}
+
+class fita3.ContadorId{
+    - id: int
+    {static}- contador: ContadorId
+    {static}- contadorInstancies: ContadorId
+
+    - ContadorId()
+    + getContador()
+    + setId()
+    + getId()
+}
+
+class fita3.SearchById{
+    {static} - logger : Logger
+    +visitProjectID(Projecte, int): Activitat
+    +visitTaskId(Tasca, int) : Activitat
+
+}
+interface fita3.VisitorId{
+    + visitTaskId(Tasca,int): Activitat
+    +visitProjectID(Projecte,int): Activitat
+}
+
+class webserver.MainWebServer{
+    {static} +main(String[])
+    {static} + webServer()
+    {static} + makeTreeCourses(): Activitat
+}
+
+class webserver.WebServer{
+    {static} - PORT:int
+    - currentActivity: Activitat
+    - root: Activitat
+
+    +WebServer(Activitat)
+    -findActivityById(int):Activitat
+    +run()
+    +makeBodyAnswer(String[]): String
+    +makeHeaderAnswer() String
+}
+@enduml
